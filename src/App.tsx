@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom'
-import { OfflineFeedback } from './components/OfflineFeedback.tsx';
+import { OfflineFeedback } from './components/OfflineFeedback.tsx'
 import { useRoutes } from './router/routes.tsx'
 import { ToastContainer } from 'react-toastify'
 import { useAuthStore } from './store/auth-store/auth-store.ts'

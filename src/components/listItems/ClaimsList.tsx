@@ -28,7 +28,7 @@ export const ClaimsList = () => {
 
     return (
         <>
-            {countItems && <PaginationListItems itemsPerPage={5} />}
+            {countItems && <PaginationListItems itemsPerPage={6} />}
 
         </>
     )

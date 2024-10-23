@@ -3,9 +3,9 @@ import Test from '../components/Test.tsx';
 import {ClaimsPage} from '../pages/ClaimsPage.tsx'
 import {AuthPage} from '../pages/AuthPage.tsx'
 import {UserPage} from '../pages/UserPage.tsx'
-import {PrivateRoutes} from "./PivateRoutes.tsx";
-import {MainLayout} from "../layouts/MainLayout.tsx";
-import {InfoPage} from "../pages/InfoPage.tsx";
+import {PrivateRoutes} from "./PivateRoutes.tsx"
+import {MainLayout} from "../layouts/MainLayout.tsx"
+import {InfoPage} from "../pages/InfoPage.tsx"
 export const useRoutes = () => {
     return (
         <Routes>

@@ -37,7 +37,7 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
   const countItems = useDataStore(state => state.countItems)
   const loading = useDataStore(state => state.loading)
   const [selectedOption, setSelectedOption] = useState(options[0])
-  //const location = useLocation()
+
   const endOffset = itemOffset + itemsPerPage
   const currentItems = listItems
     .sort((a, b) => {
@@ -58,8 +58,11 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
     })
     .slice(itemOffset, endOffset)
 
-  const pageCount = Math.ceil(countItems / itemsPerPage)
 
+  const pageCount =
+    selectedOption.value === 'Кроме выполненных'
+      ? Math.ceil(countItems / itemsPerPage)
+      :  Math.ceil(currentItems.length / itemsPerPage)
 
   function Items() {
     return (
@@ -83,7 +86,10 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
     if (countClaim) {
       countClaim.scrollIntoView({ behavior: 'smooth' })
     }
-    const newOffset = (event.selected * itemsPerPage) % countItems
+    const newOffset =
+      selectedOption.value === 'Кроме выполненных'
+        ? (event.selected * itemsPerPage) % countItems
+        : (event.selected * itemsPerPage) % currentItems.length
     setItemOffset(newOffset)
   }
   const handleClick = () => {
@@ -92,8 +98,6 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
       countClaim.scrollIntoView({behavior: 'smooth'})
     }
   }
-
-  console.log(listItems, 'listItems PaginationListItems')
 
   return (
     <>
@@ -108,7 +112,7 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
         defaultValue={selectedOption}
         onChange={(newValue) => setSelectedOption(newValue ?? { label: '', value: '' })}
         options={options}
-        className="d=flex w-100 bg-dark-subtle"
+        className="d=flex w-100 bg-dark-subtle z-3"
         autoFocus={false}
         isSearchable={false}
       />
@@ -119,7 +123,7 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
         </>
       }
 
-      {(countItems && currentItems.length > 0) &&
+      {(countItems > 1 && currentItems.length > 1) &&
         <ReactPaginate
           className="d-flex justify-content-around align-items-center pagination"
           breakLabel="..."
