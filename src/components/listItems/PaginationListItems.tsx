@@ -99,6 +99,8 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
     }
   }
 
+
+  console.log('listItems', listItems)
   return (
     <>
       {!loading && countItems> 0 &&
@@ -118,12 +120,11 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
       />
       {
         <>
-        {!currentItems.length && <ErrorItem text={'Заявок нет!'}/>}
+        {(!currentItems.length && countItems) && <ErrorItem text={'Заявок нет!'}/>}
           {(countItems && currentItems.length > 0) && <Items />}
         </>
       }
 
-      {(countItems > 1 && currentItems.length > 1) &&
         <ReactPaginate
           className="d-flex justify-content-around align-items-center pagination"
           breakLabel="..."
@@ -143,8 +144,8 @@ export const PaginationListItems = ({ itemsPerPage}: itemsPerPageProps) => {
           renderOnZeroPageCount={null}
           activeClassName="active-page"
         />
-      }
-      {(!loading && countItems >= 3 && currentItems.length >= 3 ) &&
+
+      {(countItems >= 3 && currentItems.length >= 3 ) &&
         <div className="text-center">
           <button type="button" className="btn btn-sm btn-primary mb-3 mt-2 btn-hover"
                   onClick={handleClick}>
