@@ -6,11 +6,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': {
+      '/testapi': {
         target: 'https://sw.silinet.net/index.php',
         changeOrigin: true,
-        secure: true,
-        ws: true,
+        // secure: true,
+        // ws: true,
       },
     },
   },

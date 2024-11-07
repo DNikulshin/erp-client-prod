@@ -19,11 +19,13 @@ export const TestPage = () => {
 
             const encodedAuth = Base64.encode(`${userName}:${password}`)
 
-            const response = await axios('/api', {
+            const response = await axios('/testapi', {
                 headers: {
                     Authorization: `Basic ${encodedAuth}`,
                 },
             })
+
+            console.log(encodedAuth)
 
             if (response.status === 200) {
                 setIsAuth(true)
@@ -31,6 +33,8 @@ export const TestPage = () => {
             }
         } catch (e) {
             if (e instanceof AxiosError) {
+                const encodedAuth = Base64.encode(`${userName}:${password}`)
+                console.log(encodedAuth)
                 setIsAuth(false)
                 setError(`Request failed, status: ${e.status}`)
                 console.log(e)
