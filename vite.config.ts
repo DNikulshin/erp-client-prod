@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/testapi': {
+      '/api': {
         target: 'https://sw.silinet.net/index.php',
         changeOrigin: true,
         // secure: true,
