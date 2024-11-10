@@ -104,5 +104,6 @@ export const useAuthStore = create<authStore>() ((set, get) => ({
         localStorage.removeItem('userId')
         localStorage.removeItem('userName')
         localStorage.removeItem('divisionId')
+        localStorage.removeItem('cookie-test')
     }
 }))

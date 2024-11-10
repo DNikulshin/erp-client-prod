@@ -11,7 +11,6 @@ export const Comments: FC<PropTypes> = ({
                                           comments,
                                           itemId,
                                         }) => {
-  console.log(comments, 'comments')
   const [open, setOpen] = useState(false)
 
 

@@ -9,10 +9,23 @@ export const AllowStaff = ({ staffNames, id }: AllowStaffProps) => {
   return (
     <>
       {<div
-        className="d-flex flex-wrap gap-2" tabIndex={0}>
-        {staffNames && staffNames.map(item =>
+        className="gap-2 mt-2" tabIndex={0}
+      style={{
+        display: "grid",
+        gridTemplateColumns: '1fr 1fr'
+      }}>
+        {staffNames && staffNames.sort((a, b) => {
+          if (a.name?.toLowerCase() < b.name?.toLowerCase()) {
+            return -1
+          }
+          if (a.name?.toLowerCase() > b.name?.toLowerCase()) {
+            return 1
+          }
+          return 0
+        })
+          .map(item =>
           <div key={item.id}
-               className="d-flex justify-content-between align-items-center"
+               className="d-flex align-items-center"
           >
             <AllowStaffIcon id={id} itemId={item.id}/>
             <small
