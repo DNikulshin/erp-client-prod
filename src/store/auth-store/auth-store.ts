@@ -22,7 +22,7 @@ export interface IformData {
 }
 
 export const useAuthStore = create<authStore>() ((set, get) => ({
-    isAuth: false,
+    isAuth: JSON.parse(localStorage.getItem('isAuthUser')) || false,
     responseResult: null,
     userName: '',
     userId: localStorage.getItem('userId') || '',
@@ -49,6 +49,7 @@ export const useAuthStore = create<authStore>() ((set, get) => ({
                 set({isAuth: true})
                 set({userName: formData.login})
                 localStorage.setItem('userName', formData.login)
+                localStorage.setItem('isAuthUser', JSON.stringify(true))
 
                 const {userName} = get()
                 if (!localStorage.getItem('userId')) {
@@ -105,5 +106,6 @@ export const useAuthStore = create<authStore>() ((set, get) => ({
         localStorage.removeItem('userName')
         localStorage.removeItem('divisionId')
         localStorage.removeItem('cookie-test')
+        localStorage.removeItem('isAuthUser')
     }
 }))

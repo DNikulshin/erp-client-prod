@@ -29,9 +29,9 @@ export const AdditionalData = (props: IItem) => {const {
     <>
     {additional_data && <div className="d-flex flex-column w-100">
       <hr className="w-75" />
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex gap-2 align-items-center">
         <button
-          className="btn btn-sm p-2 btn-outline box-shadow mb-3 box-shadow bg-success text-light"
+          className="btn btn-sm p-2 btn-outline box-shadow mb-3 box-shadow bg-success text-light d-flex align-self-lg-start"
           onClick={setDetailData}
         >
           {openDetail ? 'Скрыть' : 'Подробнее...'}
@@ -56,7 +56,7 @@ export const AdditionalData = (props: IItem) => {const {
           .flat()
           .map(item =>
             <div key={item.id} className="mb-2">
-              <strong>{replaceSpecialSymbols(item?.caption)}&nbsp;
+              <strong>{replaceSpecialSymbols(item?.caption)}{' '}
               </strong>{replaceSpecialSymbols(item?.value)}</div>)}
 
         <div className="d-flex align-self-start flex-wrap gap-3">

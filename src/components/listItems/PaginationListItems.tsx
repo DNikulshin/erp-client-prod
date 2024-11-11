@@ -91,7 +91,7 @@ export const PaginationListItems = ({ itemsPerPage }: itemsPerPageProps) => {
   }
 
 
-  console.log(listItems)
+  // console.log(listItems)
   return (
     <>
       {!loading && countItems > 0 && (
