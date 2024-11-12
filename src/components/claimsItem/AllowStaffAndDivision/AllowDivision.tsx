@@ -25,7 +25,7 @@ export const AllowDivision = ({ id, divisionItemId, divisionName }: IDivision) =
     }
   }, [divisionDelete])
   return (
-    <div className="d-flex justify-conten-around align-items-center mb-2">
+    <div className="d-flex justify-conten-around align-items-center mt-2 mb-2">
       {!isAdd
         ? <svg xmlns="http://www.w3.org/2000/svg"
                width="28"

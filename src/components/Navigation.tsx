@@ -136,13 +136,10 @@ export const Navigation = ({ logout }: navigationProps) => {
                         <NavLink to="/" className="d-flex btn btn-sm text-bg-light text-secondary box-shadow_svg">
                             <House />
                         </NavLink>
-                        <NavLink to="/user" className="d-flex btn btn-sm text-bg-light text-secondary box-shadow_svg">
-                            <PersonBoundingBox />
-                        </NavLink>
                         <NavLink
-                            className="d-flex btn btn-sm text-bg-light text-secondary box-shadow_svg"
-                            to="/test"
-                            title="test"
+                          className="d-flex btn btn-sm text-bg-light text-secondary box-shadow_svg"
+                          to="/test"
+                          title="test"
                         >
                             <Wrench />
                         </NavLink>
@@ -152,6 +149,9 @@ export const Navigation = ({ logout }: navigationProps) => {
                             title="info"
                         >
                             <Search />
+                        </NavLink>
+                        <NavLink to="/user" className="d-flex btn btn-sm text-bg-light text-secondary box-shadow_svg">
+                            <PersonBoundingBox />
                         </NavLink>
                     </div>
 

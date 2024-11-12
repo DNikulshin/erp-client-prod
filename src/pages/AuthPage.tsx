@@ -1,14 +1,16 @@
-import { ChangeEventHandler, FormEventHandler, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react'
+import {useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuthStore } from '../store/auth-store/auth-store.ts';
 import { IformData } from '../store/auth-store/auth-store.ts';
-
+import { Loader } from '../components/Loader.tsx'
 
 export const AuthPage = () => {
   const navigate = useNavigate();
   const checkAuth = useAuthStore(store => store.checkAuth);
+  const isAuth = useAuthStore(store => store.isAuth);
   const [formValue, setFormValue] = useState<IformData>({ login: '', pass: '' });
+  const [loadingPage, setLoadingPage] = useState(false)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(async (e) => {
     e.preventDefault();
@@ -20,11 +22,19 @@ export const AuthPage = () => {
     const data = await checkAuth(formValue);
     if (data) {
       navigate('/')
-      window.location.reload()
+      //window.location.reload()
     }
 
 
-  }, [checkAuth, formValue, navigate]);
+  }, [formValue]);
+
+
+  useEffect(() => {
+    if(isAuth) {
+      navigate('/')
+      setLoadingPage(true)
+    }
+  }, [isAuth, navigate])
 
   const changeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     setFormValue({
@@ -33,6 +43,10 @@ export const AuthPage = () => {
     });
 
   };
+
+  if(loadingPage) {
+    return null
+  }
 
   return (
     <div className="w-100 h-100 d-flex justify-content-center align-items-center flex-column">

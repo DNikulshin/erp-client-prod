@@ -22,6 +22,7 @@ export const Item = (props: IItem) => {
     type,
     attach,
     numberItem,
+    customer
   } = props;
 
   const [open, setOpen] = useState(false);
@@ -32,12 +33,15 @@ export const Item = (props: IItem) => {
   const getAllowStaff = useDataStore(state => state.getAllowStaff);
   const getEmployees = useUserStore(state => state.getEmployees);
   const getDivisions = useUserStore(state => state.getDivisions);
+
+
   //const attachGet = useDataStore(state => state.attachGet);
   const [isEdit, setIsEdit] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
   const [staffNames, setStaffNames] = useState<IEmployee[]>([]);
   const [divisionsNames, setDivisionsNames] = useState<IDivision[]>([]);
   //const [attachUrls, setAttachUrls] = useState([]);
+  // const [entranceFloor, setEntranceFloor] = useState([])
 
   const handleOpen: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -72,6 +76,10 @@ export const Item = (props: IItem) => {
     }
   }
 
+  // const   showEntranceFloorData  = async (id: number) => {
+  //   if(id)
+  //   await setEntranceFloor(await showEntranceFloor(id))
+  // }
   // useEffect(() => {
   //   const getAttach = async () => {
   //    const test =  await attachGet(attach)

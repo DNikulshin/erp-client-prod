@@ -12,7 +12,7 @@ export const AllowStaffAndDivisionList = ({ id, staffNames, divisionsNames }: Al
 
   return (
     <>
-      {<div className="flex flex-column mt-2 justify-content-between">
+      {<div className="flex flex-column gap-3">
         <div className="list-group"
         >
           {divisionsNames

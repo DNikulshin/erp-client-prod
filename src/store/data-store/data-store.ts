@@ -48,6 +48,7 @@ interface useDataStoreProps {
   attachGet: (id: number) => Promise<any>
   getNodes: () => Promise<any>
   nodes: any[]
+  showEntranceFloor: (id: number) => Promise<unknown[]>
  // attachDelete: (id: number, fileName: string) => Promise<any>
   // divisionStore: IDivision[]
   // getDivisions: (id: number | string) => Promise<any>
@@ -168,7 +169,8 @@ export const useDataStore = create<useDataStoreProps>()((set, get) => ({
           action: 'show',
           id: get().listItemsId,
         },
-      });
+      })
+
       if (get().countItems > 1) {
         set({ listItems: Object.values(showItems.data.data) });
       } else {
@@ -189,7 +191,16 @@ export const useDataStore = create<useDataStoreProps>()((set, get) => ({
         throw e;
       }
     }
-
+  },
+  showEntranceFloor: async (id: number) =>  {
+    const {data} =  await instanceAxios('/api', {
+      params: {
+        cat: 'customer',
+        action: 'get_data',
+        customer_id: id,
+      }
+    })
+    return  data?.data['address'] ?? []
   },
   showItemById: async (id: number | string) => {
     try {
