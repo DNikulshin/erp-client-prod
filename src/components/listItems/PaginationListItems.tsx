@@ -111,7 +111,7 @@ export const PaginationListItems = ({ itemsPerPage }: itemsPerPageProps) => {
         options={options}
         className="d=flex w-100 bg-dark-subtle z-3"
         autoFocus={false}
-        isSearchable={true}
+        isSearchable={false}
       />
       {
         <>
